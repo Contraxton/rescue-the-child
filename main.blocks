@@ -1,0 +1,18 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="gEkV5y[LrtWZV,]o|L2m">mySprite</variable><variable type="KIND_SpriteKind" id="-V9l|4/m|5OSEB|uccPv">Player</variable><variable type="KIND_SpriteKind" id="tp1YsM/nHFVHE))~P5|z">Projectile</variable><variable type="KIND_SpriteKind" id=")Lf}C|(In?*czos|uCjV">Food</variable><variable type="KIND_SpriteKind" id="/T4;rTk5Qmbz}?s#A*ik">Enemy</variable></variables><block type="pxt-on-start" id="4A_-]gnt|?cTBBt6a*+`" x="0" y="0"><statement name="HANDLER"><block type="variables_set" id="CWBNCp#{W%BM9@p,LkoM"><field name="VAR" id="gEkV5y[LrtWZV,]o|L2m">mySprite</field><value name="VALUE"><shadow type="math_number"><field name="NUM">0</field></shadow><block type="spritescreate" id="~:XQ:yqW~xTwoyMH:9}p"><value name="img"><shadow type="screen_image_picker" id="ue%ox}7iEum/az:vzy`X"><field name="img">img`
+. . . . . f f f f f . . . . . . 
+. . . . f d b b b b f . . . . . 
+. . . . f b b b b b f . . . . . 
+. . . . f b f f f f f . . . . . 
+. . . . f b b b f b f . . . . . 
+. . . . f b b b f b f . . . . . 
+. . . . f b b b f b f . . . . . 
+. . . f d f f f f f d f . . . . 
+. . f d d b e e e b d d f . . . 
+. . f e b b b e b b b e f . . . 
+. . f e f e b b b e f e f . . . 
+. . f f f e b b b e f f f . . . 
+. . b b f c c d c c f b b . . . 
+. . . . f e b b b e f . . . . . 
+. . . . f f f f f f f . . . . . 
+. . . . . e e . e e . . . . . . 
+`</field><data>{"commentRefs":[],"fieldData":{"img":"myImages.image1"}}</data></shadow></value><value name="kind"><shadow type="spritekind" id="aV(|S[C8Uf(T`rK}@D5f"><field name="MEMBER">Player</field></shadow></value></block></value><next><block type="game_control_sprite" id="T.ES#aY=k_!v5/@g]=K1"><mutation xmlns="http://www.w3.org/1999/xhtml" _expanded="0" _input_init="false"></mutation><value name="sprite"><block type="variables_get" id="ccw+CODlO6qFDlMN?3-L"><field name="VAR" id="gEkV5y[LrtWZV,]o|L2m">mySprite</field></block></value><next><block type="tilemap_editor" id="BYf-}l)N(JVkw]+G@Kv7"><field name="tilemap">tilemap`level1`</field><data>{"commentRefs":[],"fieldData":{"tilemap":"level1"}}</data></block></next></block></next></block></statement></block></xml>
