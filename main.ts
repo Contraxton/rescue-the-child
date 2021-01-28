@@ -62,22 +62,42 @@ controller.moveSprite(mySprite)
 tiles.setTilemap(tilemap`level1`)
 scene.cameraFollowSprite(mySprite)
 mySprite2 = sprites.create(img`
-    . . . . . . f f f f f . . . . . 
-    . . . . . f f . . . f f . . . . 
-    . . f f f f . . . . . f f . . . 
-    . f f . . f f . . . f . . f . . 
-    . f . . . . f f . f f . . f f . 
-    f f . . . f . . f f . f . . f . 
-    f . . . . . . . . . . f . . f . 
-    f . . . . . . . . . . . . . f . 
-    . f . . . f f f f f f . . . f . 
-    . f . . . f . . . . f . . . f . 
-    . f f . . f . . . . f . . f . . 
-    . . f f . . f . . . . . f f . . 
-    . . . f f f . . . . f f f . . . 
     . . . . . f f f f f f . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
+    . . . . f 1 1 1 1 1 1 f . . . . 
+    . . . f 1 1 1 1 1 1 1 1 f . . . 
+    . . . f f f f f f f f f f . . . 
+    . . . f 1 f f 1 1 f f 1 f . . . 
+    . . . f 1 1 1 1 1 1 1 1 f . . . 
+    . . . f 1 1 1 f f 1 1 1 f . . . 
+    . . f 1 1 1 f 1 1 f 1 1 1 f . . 
+    . . f 1 1 f 1 1 1 1 f 1 1 f . . 
+    . . . f f 1 1 f f 1 1 f f . . . 
+    . . . . 1 f f 1 1 f f 1 . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . 1 1 1 1 f f 1 1 1 1 . . . 
+    . . . 1 1 f f f f f f 1 1 . . . 
+    . . . . . 1 1 . . 1 1 . . . . . 
+    . . . . . f f . . f f . . . . . 
     `, SpriteKind.badGuy)
-mySprite2.follow(mySprite, 50)
-mySprite2.setPosition(91, 4)
+mySprite2.follow(mySprite, 25)
+mySprite2.setPosition(160, 60)
+mySprite2 = sprites.create(img`
+    . . . . . f f f f f f . . . . . 
+    . . . . f 1 1 1 1 1 1 f . . . . 
+    . . . f 1 1 1 1 1 1 1 1 f . . . 
+    . . . f f f f f f f f f f . . . 
+    . . . f 1 f f 1 1 f f 1 f . . . 
+    . . . f 1 1 1 1 1 1 1 1 f . . . 
+    . . . f 1 1 1 f f 1 1 1 f . . . 
+    . . f 1 1 1 f 1 1 f 1 1 1 f . . 
+    . . f 1 1 f 1 1 1 1 f 1 1 f . . 
+    . . . f f 1 1 f f 1 1 f f . . . 
+    . . . . 1 f f 1 1 f f 1 . . . . 
+    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
+    . . . 1 1 1 1 f f 1 1 1 1 . . . 
+    . . . 1 1 f f f f f f 1 1 . . . 
+    . . . . . 1 1 . . 1 1 . . . . . 
+    . . . . . f f . . f f . . . . . 
+    `, SpriteKind.badGuy)
+mySprite2.follow(mySprite, 30)
+mySprite2.setPosition(0, 75)
