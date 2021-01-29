@@ -1,8 +1,16 @@
 namespace SpriteKind {
     export const badGuy = SpriteKind.create()
 }
+controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    mySprite,
+    assets.animation`mandelorian walking`,
+    200,
+    true
+    )
+})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.badGuy, function (sprite, otherSprite) {
-    game.over(false)
+    game.over(false, effects.confetti)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     music.pewPew.play()
@@ -25,79 +33,51 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         . . . . . . . . . . . . . . . . 
         `, mySprite, 50, 0)
 })
-sprites.onOverlap(SpriteKind.Projectile, SpriteKind.badGuy, function (sprite, otherSprite) {
-    tiles.setTilemap(tilemap`level5`)
-    mySprite2.setPosition(34896053, 8345)
-    mySprite.setPosition(34896053, 6.386084765845897e+23)
-    projectile.setPosition(34896053, 8345)
-    game.showLongText("loading next round...", DialogLayout.Bottom)
-    tiles.setTilemap(tilemap`level2`)
-    mySprite2.setPosition(91, 4)
-    mySprite.setPosition(76, 34)
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    mySprite,
+    assets.animation`mandelorian walking`,
+    200,
+    false
+    )
 })
+controller.down.onEvent(ControllerButtonEvent.Pressed, function () {
+    animation.runImageAnimation(
+    mySprite,
+    assets.animation`mandelorian walking`,
+    200,
+    true
+    )
+})
+let moving = false
 let projectile: Sprite = null
-let mySprite2: Sprite = null
 let mySprite: Sprite = null
 mySprite = sprites.create(img`
     .....fffff..........
-    ....fd6666f.........
-    ....f66666f.........
-    ....f6fffff.........
-    ....f666f6f.........
-    ....f666f6f.........
-    ....f666f6f.fff.....
-    ...fdfffffdffd7fff2.
-    ..fdd6eee6dedddddd2.
-    ..fe666e666ebdddddf.
-    ..fefe666effbdfffff.
-    ..fffe666ef.fdf.....
-    ..bbfccdccf.fff.....
-    ....fe666ef.........
+    ....f96666f.........
+    ....f66669f.........
+    ....fffffff.........
+    ....f66f66f.........
+    ....f96f66f.........
+    ....f66f96f.........
+    ...f9fffff6ff.......
+    ..f666eee669f.......
+    ..fe966e696ef.......
+    ..fefe666efff.......
+    ..fffe966efff.......
+    ..bbfccdccfbb.......
+    ....fe669ef.........
     ....fffffff.........
     .....ee.ee..........
     ....................
     ....................
     `, SpriteKind.Player)
 controller.moveSprite(mySprite)
-tiles.setTilemap(tilemap`level1`)
 scene.cameraFollowSprite(mySprite)
-mySprite2 = sprites.create(img`
-    . . . . . f f f f f f . . . . . 
-    . . . . f 1 1 1 1 1 1 f . . . . 
-    . . . f 1 1 1 1 1 1 1 1 f . . . 
-    . . . f f f f f f f f f f . . . 
-    . . . f 1 f f 1 1 f f 1 f . . . 
-    . . . f 1 1 1 1 1 1 1 1 f . . . 
-    . . . f 1 1 1 f f 1 1 1 f . . . 
-    . . f 1 1 1 f 1 1 f 1 1 1 f . . 
-    . . f 1 1 f 1 1 1 1 f 1 1 f . . 
-    . . . f f 1 1 f f 1 1 f f . . . 
-    . . . . 1 f f 1 1 f f 1 . . . . 
-    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
-    . . . 1 1 1 1 f f 1 1 1 1 . . . 
-    . . . 1 1 f f f f f f 1 1 . . . 
-    . . . . . 1 1 . . 1 1 . . . . . 
-    . . . . . f f . . f f . . . . . 
-    `, SpriteKind.badGuy)
-mySprite2.follow(mySprite, 25)
-mySprite2.setPosition(160, 60)
-mySprite2 = sprites.create(img`
-    . . . . . f f f f f f . . . . . 
-    . . . . f 1 1 1 1 1 1 f . . . . 
-    . . . f 1 1 1 1 1 1 1 1 f . . . 
-    . . . f f f f f f f f f f . . . 
-    . . . f 1 f f 1 1 f f 1 f . . . 
-    . . . f 1 1 1 1 1 1 1 1 f . . . 
-    . . . f 1 1 1 f f 1 1 1 f . . . 
-    . . f 1 1 1 f 1 1 f 1 1 1 f . . 
-    . . f 1 1 f 1 1 1 1 f 1 1 f . . 
-    . . . f f 1 1 f f 1 1 f f . . . 
-    . . . . 1 f f 1 1 f f 1 . . . . 
-    . . . 1 1 1 1 1 1 1 1 1 1 . . . 
-    . . . 1 1 1 1 f f 1 1 1 1 . . . 
-    . . . 1 1 f f f f f f 1 1 . . . 
-    . . . . . 1 1 . . 1 1 . . . . . 
-    . . . . . f f . . f f . . . . . 
-    `, SpriteKind.badGuy)
-mySprite2.follow(mySprite, 30)
-mySprite2.setPosition(0, 75)
+tiles.setTilemap(tilemap`level1`)
+game.onUpdate(function () {
+    moving = controller.down.isPressed() || controller.up.isPressed()
+    if (!(moving)) {
+        animation.stopAnimation(animation.AnimationTypes.All, mySprite)
+    }
+})
